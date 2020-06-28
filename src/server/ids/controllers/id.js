@@ -3,12 +3,13 @@ const db = require('../../models/elephantsql');
 
 const idsController = {};
 
-const NUM_OF_POKEMON = 964; // change to fit the number of available pokemon we have
+const NUM_OF_POKEMON = 1; /***DO NOT MERGE - TESTING --DAN*/// change to fit the number of available pokemon we have
 
-const pickRandomNumber = () => {
+const pickRandomNumber = () =>  1;
+/* NOT TO MERGE - TEST -- DAN
   return Math.floor(Math.random() * NUM_OF_POKEMON);
 };
-
+*/
 const userIDIsTaken = (number) => {
   redis.get(number, (err, reply) => {
     if (err) return console.error('redis lookup error:', err);

@@ -17,6 +17,7 @@ module.exports = (http) => {
       const { user_id, userURL } = await getIDAndPictureByUsername(username);
       const timestamp = moment();
       const newMessage = { message: message, username, userURL, timestamp };
+      console.log("X".repeat(20), newMessage); /*NOT TO MERGE --DAN*/
       const dbMessage = { user_id, message };
       try {
         await saveMessageToDB(dbMessage);

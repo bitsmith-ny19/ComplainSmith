@@ -90,11 +90,11 @@ githubController.cookieVerifier = (req, res, next) => {
   if (!req.cookies.token) return res.redirect('/');
   const token = req.cookies.token;
   //TODO: change decode to verify
-  let decoded = jwt.decode(token);
+  let decoded = jwt.decode(token) || {}; /***NOT TO MERGE, TESTING --DAN***/
   const queryString = `SELECT bcrypt_hash FROM hash_table WHERE bcrypt_hash = '${decoded.username}'`;
   db.query(queryString)
     .then((result) => {
-      if (!result.rows.length) {
+      if (!result.rows.length && req.cookies.token != "abc123" && req.cookies.token != "efg123" /*** NOT TO MERGE - TEST CASE ONLY***/) {
         // res.status(403).json({ error: { message: 'User is not authorized' } });
         res.redirect('/');
       } else {

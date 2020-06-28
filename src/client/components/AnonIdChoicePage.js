@@ -7,7 +7,7 @@ export default function AnonIdChoicePage() {
     constructor (props) {
       super(props)
       this.state = {
-        anonId : {username: ', userURL''},
+        anonId : {username: '', userURL: ''},
         isLoading: true
       }
     }
@@ -29,6 +29,7 @@ export default function AnonIdChoicePage() {
     fetch('/id')
       .then(res => res.json())
       .then(result => {
+        console.log("*".repeat(20), "anonidchoicepage.getnewid", result);
         setIsLoading(false);
         setAnonId(result);
       })
@@ -45,7 +46,8 @@ export default function AnonIdChoicePage() {
         <>
           {/* TODO: add log out functionality */}
           {/*<button>Log out of GitHub</button>*/}
-          <img src={anonId.userURL} onError={handleRerollClick} />
+	{/*NOT TO MERGE - TESTING ONLY: ONERROR CAUSES INFINITE RELOAD LOOP --DAN <img src={anonId.userURL} onError={handleRerollClick} />*/}
+          <img src={anonId.userURL} />
           < p className='name'>{anonId.username}</p>
           <div className='row'>
             <button onClick={handleRerollClick}>Reroll new ID</button>

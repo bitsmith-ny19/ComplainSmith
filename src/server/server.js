@@ -29,6 +29,7 @@ app.use(cookieParser()) // we need to add this line to have a chance to read the
 app.use('/auth', githubRouter);
 app.use('/id', idsRouter);
 app.use('/messages', messagesRouter);
+app.use('/img/test1.png', (req,res) =>  res.sendFile( path.resolve(__dirname,'test1.png') ) ); /***NOT TO COMMIT - TESTING --DAN**/
 
 // serves the index.html file at the root route for initial get request
 // TODO: add cookieVerifier in front of /chat
